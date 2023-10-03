@@ -47,11 +47,16 @@
   <ItemGroup>
      <Compile Include="Assets/Scripts/GameController.cs" />
      <Compile Include="Assets/Scripts/BallController.cs" />
+     <Compile Include="Assets/Scripts/WallController.cs" />
      <Compile Include="Assets/Scripts/PlayerController.cs" />
+     <Compile Include="Assets/Scripts/AgentController.cs" />
      <Folder Include="Assets" />
      <Folder Include="Assets/Scenes" />
      <Folder Include="Assets/Physics" />
      <Folder Include="Assets/Materials" />
+     <Folder Include="Assets/ML-Agents" />
+     <Folder Include="Assets/ML-Agents/Timers" />
+     <None Include="Assets/ML-Agents/Timers/SampleScene_timers.json" />
      <Folder Include="Assets/Scripts" />
      <Reference Include="UnityEngine">
      <HintPath>/home/alex/Unity/Hub/Editor/2022.3.10f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>

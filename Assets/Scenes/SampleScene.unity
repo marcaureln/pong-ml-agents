@@ -139,7 +139,7 @@ GameObject:
   - component: {fileID: 224541411}
   m_Layer: 0
   m_Name: Ball
-  m_TagString: Untagged
+  m_TagString: Ball
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -283,7 +283,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!1 &464337514
 GameObject:
   m_ObjectHideFlags: 0
@@ -365,7 +365,7 @@ Transform:
   m_GameObject: {fileID: 464337514}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10, y: 0, z: -1}
+  m_LocalPosition: {x: 10, y: 0, z: -1}
   m_LocalScale: {x: 0.25, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -384,6 +384,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 7
+  autoPilot: 1
+  ball: {fileID: 224541409}
 --- !u!50 &464337518
 Rigidbody2D:
   serializedVersion: 4
@@ -410,7 +412,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 4
+  m_Constraints: 5
 --- !u!61 &464337519
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -561,6 +563,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fefdb2523f8a8271bbd44b498a82d2fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerOnLeft: {fileID: 1175838076}
+  playerOnRight: {fileID: 464337514}
+  ball: {fileID: 224541405}
 --- !u!1 &611070589
 GameObject:
   m_ObjectHideFlags: 0
@@ -657,6 +662,7 @@ GameObject:
   - component: {fileID: 1080550710}
   - component: {fileID: 1080550709}
   - component: {fileID: 1080550708}
+  - component: {fileID: 1080550711}
   m_Layer: 0
   m_Name: WallLeft
   m_TagString: Untagged
@@ -674,7 +680,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -11, y: 0, z: -1}
-  m_LocalScale: {x: 0.25, y: 10, z: 0}
+  m_LocalScale: {x: 1, y: 15, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1732241295}
@@ -693,8 +699,8 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_AngularDrag: 0
+  m_GravityScale: 0
   m_Material: {fileID: 6200000, guid: c71fec3c93e692ea0a5caa0687fc4173, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
@@ -705,7 +711,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 7
 --- !u!61 &1080550709
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -803,6 +809,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1080550711
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1080550706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 978c571ef43c4e67b6ed3d884454024b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agent: {fileID: 1175838076}
+  mainCamera: {fileID: 519420028}
+  isAgentOpponent: 0
 --- !u!1 &1175838076
 GameObject:
   m_ObjectHideFlags: 0
@@ -815,6 +836,9 @@ GameObject:
   - component: {fileID: 1175838079}
   - component: {fileID: 1175838078}
   - component: {fileID: 1175838077}
+  - component: {fileID: 1175838082}
+  - component: {fileID: 1175838081}
+  - component: {fileID: 1175838083}
   m_Layer: 0
   m_Name: Agent
   m_TagString: Untagged
@@ -893,7 +917,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 4
+  m_Constraints: 5
 --- !u!212 &1175838079
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -955,12 +979,74 @@ Transform:
   m_GameObject: {fileID: 1175838076}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10, y: 0, z: -1}
+  m_LocalPosition: {x: -10, y: 0, z: -1}
   m_LocalScale: {x: 0.25, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1175838081
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1175838076}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2695c266a4273c788974619974b7f0cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agentParameters:
+    maxStep: 0
+  hasUpgradedFromAgentParameters: 1
+  MaxStep: 0
+  speed: 5
+  ballTransform: {fileID: 224541409}
+--- !u!114 &1175838082
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1175838076}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d1c4e0b1822b495aa52bc52839ecb30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_BrainParameters:
+    VectorObservationSize: 6
+    NumStackedVectorObservations: 1
+    m_ActionSpec:
+      m_NumContinuousActions: 1
+      BranchSizes: 
+    VectorActionSize: 01000000
+    VectorActionDescriptions: []
+    VectorActionSpaceType: 1
+    hasUpgradedBrainParametersWithActionSpec: 1
+  m_Model: {fileID: 0}
+  m_InferenceDevice: 0
+  m_BehaviorType: 0
+  m_BehaviorName: Play
+  TeamId: 0
+  m_UseChildSensors: 1
+  m_UseChildActuators: 1
+  m_ObservableAttributeHandling: 0
+--- !u!114 &1175838083
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1175838076}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a5c9d521e5ef4759a8246a07d52221e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DecisionPeriod: 5
+  TakeActionsBetweenDecisions: 1
 --- !u!1 &1268733047
 GameObject:
   m_ObjectHideFlags: 0
@@ -989,8 +1075,8 @@ Transform:
   m_GameObject: {fileID: 1268733047}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -5.1, z: -1}
-  m_LocalScale: {x: 22, y: 0.25, z: 0}
+  m_LocalPosition: {x: 0, y: -5.5, z: -1}
+  m_LocalScale: {x: 25, y: 1, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1732241295}
@@ -1183,8 +1269,8 @@ Transform:
   m_GameObject: {fileID: 1860281326}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 5.1, z: -1}
-  m_LocalScale: {x: 22, y: 0.25, z: 0}
+  m_LocalPosition: {x: 0, y: 5.5, z: -1}
+  m_LocalScale: {x: 25, y: 1, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1732241295}
@@ -1325,6 +1411,7 @@ GameObject:
   - component: {fileID: 1987717436}
   - component: {fileID: 1987717435}
   - component: {fileID: 1987717434}
+  - component: {fileID: 1987717437}
   m_Layer: 0
   m_Name: WallRight
   m_TagString: Untagged
@@ -1342,7 +1429,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 11, y: 0, z: -1}
-  m_LocalScale: {x: 0.25, y: 10, z: 0}
+  m_LocalScale: {x: 1, y: 15, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1732241295}
@@ -1361,8 +1448,8 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_AngularDrag: 0
+  m_GravityScale: 0
   m_Material: {fileID: 6200000, guid: c71fec3c93e692ea0a5caa0687fc4173, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
@@ -1373,7 +1460,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 7
 --- !u!61 &1987717435
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1471,6 +1558,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1987717437
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1987717432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 978c571ef43c4e67b6ed3d884454024b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agent: {fileID: 1175838076}
+  mainCamera: {fileID: 519420028}
+  isAgentOpponent: 1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
