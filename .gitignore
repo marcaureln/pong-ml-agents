@@ -1,0 +1,92 @@
+# Unity generated files
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+[Ll]ibrary-csharp/
+[Ll]ibrary-il2cpp/
+[Ll]ibrary-webgl/
+[Ll]ibrary-burst/
+[Ll]ibrary-metadata/
+[Ll]ibrary-shader-compiler/
+[Oo]utputs/
+[Oo]utputs/il2cpp/
+[Oo]utputs/webgl/
+[Oo]utputs/burst/
+[Oo]utputs/build/
+[Tt]est[Rr]esults/
+[Pp]ackages/
+[Im]port/
+[Uu]serData/
+[Ss]treamingAssets/
+
+# Visual Studio / MonoDevelop / Rider
+[Ee]xportedObj/
+.vscode/
+.idea/
+.vs/
+/*.suo
+/*.ntvs*
+/*.njsproj
+/*.sln
+/*.user
+/*.userosscache
+/*.suo
+/*.sln.docstates
+# User-specific files
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.userprefs
+*.sublime-workspace
+# Unity3D generated meta files
+*.pidb.meta
+# Unity3D Generated File On Crash Reports
+sysinfo.txt
+# Builds
+*.apk
+*.unitypackage
+# Crashlytics generated file
+crashlytics-build.properties
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+ehthumbs.db
+
+# Linux
+*~
+# Archives
+*.zip
+*.rar
+*.7z
+*.tar.gz
+*.tar.bz2
+*.tar.lzma
+*.tar.xz
+*.tgz
+*.tz2
+*.gz
+*.bz2
+*.lzma
+*.xz
+*.exe
+# Android
+/*.apk
+/*.aab
+# iOS
+/*.ipa
+# Temp files
+*.lock
+*.tmp
+*.bak
+*.swp
+# Python / ML-Agents Toolkit
+venv
